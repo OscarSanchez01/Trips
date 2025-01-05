@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.min.css">
+    <title>Trips Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+    <!-- HEADER -->
+    <header class="bg-white shadow p-4 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <span class="text-4xl font-bold text-pink-600">•</span>
+            <span class="text-2xl font-bold text-pink-600">Trips Planner</span>
+        </div>
+        <nav class="space-x-4">
+            <a href="#" class="text-gray-600 hover:text-pink-500">Inicio</a>
+            <a href="#" class="text-gray-600 hover:text-pink-500">Destinos</a>
+            <a href="#" class="text-gray-600 hover:text-pink-500">Favoritos</a>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="grid md:grid-cols-4 gap-6 p-6">
+        <!-- LEFT NAV -->
+        <aside class="md:col-span-1 bg-white rounded-lg shadow p-4">
+            <h2 class="text-lg font-semibold mb-4">Explorar</h2>
+            <ul class="space-y-2">
+                <li><a href="#" class="block text-gray-700 hover:text-pink-500">Atracciones populares</a></li>
+                <li><a href="#" class="block text-gray-700 hover:text-pink-500">Búsquedas recientes</a></li>
+            </ul>
+        </aside>
+
+        <!-- TRIP -->
+        <section class="md:col-span-3 bg-white rounded-lg shadow p-6">
+            <h2 class="text-xl font-semibold mb-4">Planifica tu viaje</h2>
+            <form class="space-y-4">
+                <!-- DESTINY -->
+                <div>
+                    <label for="destino" class="block text-gray-700 font-medium">Destino</label>
+                    <input id="destino" type="text" placeholder="¿A dónde quieres ir?"
+                        class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500" />
+                </div>
+
+                <!-- DATE -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="fecha-ida" class="block text-gray-700 font-medium">Fecha de ida</label>
+                        <input id="fecha-ida" type="date"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500" />
+                    </div>
+                    <div>
+                        <label for="fecha-vuelta" class="block text-gray-700 font-medium">Fecha de vuelta</label>
+                        <input id="fecha-vuelta" type="date"
+                            class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500" />
+                    </div>
+                </div>
+
+                <!-- PERSONS -->
+                <div>
+                    <label for="personas" class="block text-gray-700 font-medium">Número de personas</label>
+                    <input id="personas" type="number" placeholder="¿Cuántas personas?"
+                        class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500" />
+                </div>
+
+                <!-- SEARCH -->
+                <button type="submit"
+                    class="w-full bg-pink-600 text-white font-medium py-2 px-4 rounded-md hover:bg-pink-400">
+                    Buscar información
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white mt-8 p-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-gray-700">
+            <div>
+                <h3 class="font-semibold mb-2">Asistencia</h3>
+                <ul class="space-y-1">
+                    <li><a href="#" class="hover:text-pink-500">Centro de ayuda</a></li>
+                    <li><a href="#" class="hover:text-pink-500">TripCover</a></li>
+                    <li><a href="#" class="hover:text-pink-500">Lucha contra la discriminación</a></li>
+                    <li><a href="#" class="hover:text-pink-500">Ayuda a la discapacidad</a></li>
+                    <li><a href="#" class="hover:text-pink-500">Opciones de cancelación</a></li>
+                    <li><a href="#" class="hover:text-pink-500">¿Problemas en el barrio?</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-semibold mb-2">Cómo ser anfitrión</h3>
+                <ul class="space-y-1">
+                    <li><a href="#" class="hover:text-pink-500">Pon tu casa en Trips Planner</a></li>
+                    <li><a href="#" class="hover:text-pink-500">TripCover para anfitriones</a></li>
+                    <li><a href="#" class="hover:text-pink-500">Recursos para anfitriones</a></li>
+                    <li><a href="#" class="hover:text-pink-500">Foro de la comunidad</a></li>
+                    <li><a href="#" class="hover:text-pink-500">Ser un anfitrión responsable</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-semibold mb-2">Trips Planner</h3>
+                <ul class="space-y-1">
+                    <li><a href="#" class="hover:text-pink-500">Newsroom</a></li>
+                    <li><a href="#" class="hover:text-pink-500">Nuevas funciones</a></li>
+                    <li><a href="#" class="hover:text-pink-500">Empleo</a></li>
+                    <li><a href="#" class="hover:text-pink-500">Inversores</a></li>
+                    <li><a href="#" class="hover:text-pink-500">Tarjetas regalo</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-4 text-sm text-gray-500 text-center">
+            © 2025 Trips Planner. Privacidad · Condiciones · Mapa del sitio
+        </div>
+    </footer>
+</body>
+
+</html>
