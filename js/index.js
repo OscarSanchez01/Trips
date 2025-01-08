@@ -65,3 +65,118 @@ const init = async () => {
 
 // Inicializar
 init();
+
+
+//Validacion del formulario
+// Elementos del formulario
+const formulario = document.getElementById('formulario');
+const provincia = document.getElementById('provincia');
+const ciudad = document.getElementById('ciudad');
+const fechaIda = document.getElementById('fecha-ida');
+const fechaVuelta = document.getElementById('fecha-vuelta');
+const personas = document.getElementById('personas');
+const incorrectBox = document.getElementById('incorrectBox');
+const correctBox = document.getElementById('correctBox');
+const incorrectMessage = document.getElementById('incorrectMessage');
+const correctMessage = document.getElementById('correctMessage');
+
+function resetValidationIcons() {
+    const inputs = document.querySelectorAll('#formulario input, #formulario select');
+    inputs.forEach(input => {
+        input.classList.remove('border-red-500', 'border-green-500');
+    });
+}
+
+function showError(input) {
+    input.classList.add('border-red-500');
+    input.classList.remove('border-green-500');
+}
+
+function showSuccess(input) {
+    input.classList.add('border-green-500');
+    input.classList.remove('border-red-500');
+}
+
+function validarFormulario(event) {
+    event.preventDefault();
+
+    let valid = true;
+    const errorMessages = [];
+
+    resetValidationIcons();
+
+    // Validar provincia
+    if (!provincia.value) {
+        showError(provincia, 'Por favor, selecciona una provincia.');
+        errorMessages.push('Por favor, selecciona una provincia.');
+        valid = false;
+    } else {
+        showSuccess(provincia);
+    }
+
+    // Validar ciudad
+    if (!ciudad.value) {
+        showError(ciudad, 'Por favor, selecciona una ciudad.');
+        errorMessages.push('Por favor, selecciona una ciudad.');
+        valid = false;
+    } else {
+        showSuccess(ciudad);
+    }
+
+    // Validar fechas
+    const hoy = new Date();
+    const manana = new Date(hoy);
+    manana.setDate(hoy.getDate() + 1);
+
+    const año = manana.getFullYear();
+    const mes = String(manana.getMonth() + 1).padStart(2, '0');
+    const día = String(manana.getDate()).padStart(2, '0');
+    const fechaMinima = `${año}-${mes}-${día}`;
+
+    if (!fechaIda.value || fechaIda.value < fechaMinima) {
+        showError(fechaIda, `La fecha de ida debe ser al menos ${fechaMinima}.`);
+        errorMessages.push(`La fecha de ida debe ser al menos ${fechaMinima}.`);
+        valid = false;
+    } else {
+        showSuccess(fechaIda);
+    }
+
+    // Validar fecha de vuelta
+    if (!fechaVuelta.value || fechaVuelta.value <= fechaIda.value) {
+        showError(fechaVuelta, 'La fecha de vuelta debe ser posterior a la fecha de ida.');
+        errorMessages.push('La fecha de vuelta debe ser posterior a la fecha de ida.');
+        valid = false;
+    } else {
+        showSuccess(fechaVuelta);
+    }
+
+    // Validar personas
+    const numeroPersonas = parseInt(personas.value, 10);
+    if (isNaN(numeroPersonas) || numeroPersonas < 1 || numeroPersonas > 10) {
+        showError(personas, 'El número de personas debe ser entre 1 y 10.');
+        errorMessages.push('El número de personas debe ser entre 1 y 10.');
+        valid = false;
+    } else {
+        showSuccess(personas);
+    }
+
+    // Mostrar validacion
+    if (valid) {
+        correctMessage.textContent = 'Formulario enviado correctamente.';
+        correctBox.classList.remove('hidden');
+        correctBox.classList.add('block');
+        incorrectBox.classList.add('hidden');
+    } else {
+        incorrectMessage.innerHTML = '';
+        errorMessages.forEach(error => {
+            const errorItem = document.createElement('p');
+            errorItem.textContent = `- ${error}`;
+            incorrectMessage.appendChild(errorItem);
+        });
+        incorrectBox.classList.remove('hidden');
+        incorrectBox.classList.add('block');
+        correctBox.classList.add('hidden');
+    }
+}
+
+formulario.addEventListener('submit', validarFormulario);
