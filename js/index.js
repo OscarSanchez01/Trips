@@ -129,8 +129,17 @@ function validarFormulario(event) {
     manana.setDate(hoy.getDate() + 1);
 
     const año = manana.getFullYear();
-    const mes = String(manana.getMonth() + 1).padStart(2, '0');
-    const día = String(manana.getDate()).padStart(2, '0');
+
+    let mes = manana.getMonth() + 1;
+    if (mes < 10) {
+        mes = '0' + mes;
+    }
+
+    let día = manana.getDate();
+    if (día < 10) {
+        día = '0' + día;
+    }
+
     const fechaMinima = `${año}-${mes}-${día}`;
 
     if (!fechaIda.value || fechaIda.value < fechaMinima) {
