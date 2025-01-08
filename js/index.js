@@ -180,11 +180,7 @@ function validarFormulario(event) {
         };
         localStorage.setItem('datosFormulario', JSON.stringify(datosFormulario));
 
-        // Mensaje de exito
-        correctMessage.textContent = 'Formulario enviado correctamente.';
-        correctBox.classList.remove('hidden');
-        correctBox.classList.add('block');
-        incorrectBox.classList.add('hidden');
+        window.location.href = './../pages/search.html';
     } else {
         // Mensajes de error
         incorrectMessage.innerHTML = '';
