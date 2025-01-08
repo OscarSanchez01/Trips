@@ -97,6 +97,7 @@ function showSuccess(input) {
     input.classList.remove('border-red-500');
 }
 
+// Validar formulario
 function validarFormulario(event) {
     event.preventDefault();
 
@@ -106,21 +107,21 @@ function validarFormulario(event) {
     resetValidationIcons();
 
     // Validar provincia
-    if (!provincia.value) {
-        showError(provincia, 'Por favor, selecciona una provincia.');
+    if (!provinciaSelect.value) {
+        showError(provinciaSelect);
         errorMessages.push('Por favor, selecciona una provincia.');
         valid = false;
     } else {
-        showSuccess(provincia);
+        showSuccess(provinciaSelect);
     }
 
     // Validar ciudad
-    if (!ciudad.value) {
-        showError(ciudad, 'Por favor, selecciona una ciudad.');
+    if (!ciudadSelect.value) {
+        showError(ciudadSelect);
         errorMessages.push('Por favor, selecciona una ciudad.');
         valid = false;
     } else {
-        showSuccess(ciudad);
+        showSuccess(ciudadSelect);
     }
 
     // Validar fechas
@@ -129,12 +130,10 @@ function validarFormulario(event) {
     manana.setDate(hoy.getDate() + 1);
 
     const año = manana.getFullYear();
-
     let mes = manana.getMonth() + 1;
     if (mes < 10) {
         mes = '0' + mes;
     }
-
     let día = manana.getDate();
     if (día < 10) {
         día = '0' + día;
@@ -143,7 +142,7 @@ function validarFormulario(event) {
     const fechaMinima = `${año}-${mes}-${día}`;
 
     if (!fechaIda.value || fechaIda.value < fechaMinima) {
-        showError(fechaIda, `La fecha de ida debe ser al menos ${fechaMinima}.`);
+        showError(fechaIda);
         errorMessages.push(`La fecha de ida debe ser al menos ${fechaMinima}.`);
         valid = false;
     } else {
@@ -152,7 +151,7 @@ function validarFormulario(event) {
 
     // Validar fecha de vuelta
     if (!fechaVuelta.value || fechaVuelta.value <= fechaIda.value) {
-        showError(fechaVuelta, 'La fecha de vuelta debe ser posterior a la fecha de ida.');
+        showError(fechaVuelta);
         errorMessages.push('La fecha de vuelta debe ser posterior a la fecha de ida.');
         valid = false;
     } else {
@@ -162,7 +161,7 @@ function validarFormulario(event) {
     // Validar personas
     const numeroPersonas = parseInt(personas.value, 10);
     if (isNaN(numeroPersonas) || numeroPersonas < 1 || numeroPersonas > 10) {
-        showError(personas, 'El número de personas debe ser entre 1 y 10.');
+        showError(personas);
         errorMessages.push('El número de personas debe ser entre 1 y 10.');
         valid = false;
     } else {
@@ -171,11 +170,23 @@ function validarFormulario(event) {
 
     // Mostrar validacion
     if (valid) {
+        // Guardar los datos en LocalStorage
+        const datosFormulario = {
+            provincia: provinciaSelect.value,
+            ciudad: ciudadSelect.value,
+            fechaIda: fechaIda.value,
+            fechaVuelta: fechaVuelta.value,
+            personas: personas.value,
+        };
+        localStorage.setItem('datosFormulario', JSON.stringify(datosFormulario));
+
+        // Mensaje de exito
         correctMessage.textContent = 'Formulario enviado correctamente.';
         correctBox.classList.remove('hidden');
         correctBox.classList.add('block');
         incorrectBox.classList.add('hidden');
     } else {
+        // Mensajes de error
         incorrectMessage.innerHTML = '';
         errorMessages.forEach(error => {
             const errorItem = document.createElement('p');
