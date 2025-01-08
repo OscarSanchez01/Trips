@@ -14,7 +14,7 @@
     <header class="bg-white shadow p-4 flex justify-between items-center">
         <div class="flex items-center space-x-2">
             <span class="text-4xl font-bold text-pink-600">•</span>
-            <span class="text-2xl font-bold text-pink-600">Trips Planner</span>
+            <span class="text-2xl font-bold text-pink-600"><a href="./index.html">Trips Planner</a></span>
         </div>
         <nav class="space-x-4">
             <a href="#" class="text-gray-600 hover:text-pink-500">Inicio</a>
@@ -29,7 +29,6 @@
         <aside class="md:col-span-1 bg-white rounded-lg shadow p-4">
             <h2 class="text-lg font-semibold mb-4">Explorar</h2>
             <ul class="space-y-2">
-                <li><a href="#" class="block text-gray-700 hover:text-pink-500">Atracciones populares</a></li>
                 <li><a href="#" class="block text-gray-700 hover:text-pink-500">Búsquedas recientes</a></li>
             </ul>
         </aside>
@@ -37,14 +36,21 @@
         <!-- TRIP -->
         <section class="md:col-span-3 bg-white rounded-lg shadow p-6">
             <h2 class="text-xl font-semibold mb-4">Planifica tu viaje</h2>
-            <form class="space-y-4">
+            <form id="formulario" class="space-y-4">
                 <!-- DESTINY -->
                 <div>
-                    <label for="destino" class="block text-gray-700 font-medium">Destino</label>
-                    <input id="destino" type="text" placeholder="¿A dónde quieres ir?"
-                        class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500" />
+                    <label for="provincia" class="block text-gray-700 font-medium">Provincia</label>
+                    <select id="provincia" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        <option value="">Selecciona una provincia</option>
+                    </select>
                 </div>
-
+                <div>
+                    <label for="ciudad" class="block text-gray-700 font-medium">Ciudad</label>
+                    <select id="ciudad" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500" disabled>
+                        <option value="">Selecciona una ciudad</option>
+                    </select>
+                </div>
+            
                 <!-- DATE -->
                 <div class="grid grid-cols-2 gap-4">
                     <div>
@@ -58,14 +64,14 @@
                             class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500" />
                     </div>
                 </div>
-
+            
                 <!-- PERSONS -->
                 <div>
                     <label for="personas" class="block text-gray-700 font-medium">Número de personas</label>
                     <input id="personas" type="number" placeholder="¿Cuántas personas?"
                         class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500" />
                 </div>
-
+            
                 <!-- SEARCH -->
                 <button type="submit"
                     class="w-full bg-pink-600 text-white font-medium py-2 px-4 rounded-md hover:bg-pink-400">
@@ -76,7 +82,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-white mt-8 p-6">
+    <footer class="bg-white text-center mt-8 p-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-gray-700">
             <div>
                 <h3 class="font-semibold mb-2">Asistencia</h3>
@@ -115,5 +121,6 @@
         </div>
     </footer>
 </body>
+<script src="./js/index.js"></script>
 
 </html>
