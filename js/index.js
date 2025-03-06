@@ -55,7 +55,6 @@ const init = async () => {
         if (codProv) {
             await cargarCiudades(codProv);
         } else {
-            // Limpiar el select de ciudades si no hay provincia seleccionada
             const ciudadSelect = document.getElementById('ciudad');
             ciudadSelect.innerHTML = '<option value="">Selecciona una ciudad</option>';
             ciudadSelect.disabled = true;
@@ -68,7 +67,6 @@ init();
 
 
 //Validacion del formulario
-// Elementos del formulario
 const formulario = document.getElementById('formulario');
 const provincia = document.getElementById('provincia');
 const ciudad = document.getElementById('ciudad');
@@ -180,7 +178,7 @@ function validarFormulario(event) {
         };
         localStorage.setItem('datosFormulario', JSON.stringify(datosFormulario));
 
-        window.location.href = './../pages/search.html';
+        window.location.href = './pages/search.html';
     } else {
         // Mensajes de error
         incorrectMessage.innerHTML = '';

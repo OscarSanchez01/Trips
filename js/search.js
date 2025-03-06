@@ -10,7 +10,7 @@ const cargarTiempo = async () => {
         const ciudad = datosFormulario.ciudad.trim().toLowerCase().replace(/\s+/g, '');
         const apiKeyWeather = 'py7th9mgz7npy8popba5kel35fynevww8rlb7zno';
 
-        // Primera API: Obtener LAT y LON de la ciudad
+        // Primer ENDPOINT: Obtener LAT y LON de la ciudad
         const findPlacesUrl = `https://www.meteosource.com/api/v1/free/find_places?text=${ciudad}&key=${apiKeyWeather}`;
         const findPlacesResponse = await fetch(findPlacesUrl);
         const findPlacesData = await findPlacesResponse.json();
@@ -21,7 +21,7 @@ const cargarTiempo = async () => {
 
         const { lat, lon } = findPlacesData[0];
 
-        // Segunda API: Tiempo usando LAT y LON
+        // Segundo ENDPOINT: Tiempo usando LAT y LON
         const weatherUrl = `https://www.meteosource.com/api/v1/free/point?lat=${lat}&lon=${lon}&sections=all&timezone=UTC&language=en&units=metric&key=${apiKeyWeather}`;
         const weatherResponse = await fetch(weatherUrl);
         const weatherData = await weatherResponse.json();
@@ -152,7 +152,7 @@ const cargarHoteles = async () => {
             const iconImg = document.createElement('img');
             iconImg.src = icon;
             iconImg.alt = 'Icono del hotel';
-            iconImg.className = 'w-6 h-6'; // Tamaño reducido a la mitad
+            iconImg.className = 'w-6 h-6';
 
             infoContainer.appendChild(hotelName);
             infoContainer.appendChild(iconImg);
